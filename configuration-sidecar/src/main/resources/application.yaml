@@ -1,0 +1,10 @@
+instance:
+  name: instance01
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+prop1: prop1 from local
+server:
+  port: 8080

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configuration-service
+  namespace: spring-cloud-config
+  labels:
+    app: configuration-service
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: configuration-service
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: configuration-service
+        tier: backend
+    spec:
+      containers:
+      - name: configuration-service
+        image: configuration-service
+        ports:
+        - name: http-server
+          containerPort: 8080
+        env:
+        - name: HOST_NAME
+          value: configuration-service
+        - name: eureka.client.service-url.defaultZone
+          value: http://discovery-service:8761/eureka

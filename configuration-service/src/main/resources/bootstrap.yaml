@@ -1,0 +1,9 @@
+eureka:
+  instance:
+    hostname: ${HOST_NAME:localhost}
+    preferIpAddress: true
+spring:
+  application:
+    name: configuration-service
+  profiles:
+    active: jdbc,dev

@@ -1,0 +1,34 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    bus:
+      enabled: true
+      id: my-configuration-service
+    config:
+      server:
+        #spring.cloud.config.server.default-application-name=common
+        #spring.cloud.config.server.default-profile=dev
+        #the label to be set to the query if the client does not send the label info
+        #spring.cloud.config.server.default-label=dev
+        #the profile to be set to the query if the client does not send the profile info
+        #spring.cloud.config.server.default-profile=dev
+        jdbc:
+          sql: SELECT CODE, VALUE from APP_CONFIG where APPLICATION=? and PROFILE=? and LABEL=?
+          order: 1
+    stream:
+      kafka:
+        binder:
+          zkNodes: kafka-service:2181
+          brokers: kafka-service:9092
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:host.docker.internal}:3306/configurationservice
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: configurationserviceuser
+    password: password
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          core: TRACE

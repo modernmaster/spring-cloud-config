@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: configuration-sidecar
+  namespace: spring-cloud-config
+  labels:
+    app: configuration-sidecar
+    tier: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: configuration-sidecar
+    tier: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http

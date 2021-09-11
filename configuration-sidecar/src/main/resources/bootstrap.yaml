@@ -1,0 +1,28 @@
+eureka:
+  instance:
+    hostname: ${HOST_NAME:localhost}
+    preferIpAddress: true
+spring:
+  application:
+    name: configuration-sidecar
+  cloud:
+    bus:
+      #spring.cloud.bus.id=${spring.application.name}-${instance.name}
+      enabled: true
+    stream:
+      kafka:
+        binder:
+          zkNodes: kafka-service:2181
+          brokers: kafka-service:9092
+    config:
+      fail-fast: true
+      #label(git branch) can be used to point to environment --> dev, test, prod
+      label: dev
+      retry:
+        max-interval: 1000
+        max-attempts: 200
+      uri: http://configuration-service
+  profiles:
+    #last-wins strategy: instance01 overrides istanbul; istanbul overrides default
+    #https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config-profile-specific-properties
+    active: istanbul,instance01
