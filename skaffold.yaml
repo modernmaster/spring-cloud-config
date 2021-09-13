@@ -34,5 +34,5 @@ profiles:
       context: gateway-service
     - image: configuration-service
       context: configuration-service
-    - image: config-client-java
-      context: config-client-java
+    - image: configuration-sidecar
+      context: configuration-sidecar

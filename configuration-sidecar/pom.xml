@@ -10,7 +10,7 @@
     </parent>
     <artifactId>configuration-sidecar</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>config-client-java</name>
+    <name>configuration-sidecar</name>
 
     <dependencies>
         <dependency>

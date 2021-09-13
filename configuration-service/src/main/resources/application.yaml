@@ -22,10 +22,10 @@ spring:
           zkNodes: kafka-service:2181
           brokers: kafka-service:9092
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:host.docker.internal}:3306/configurationservice
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: configurationserviceuser
-    password: password
+    url: jdbc:mongodb://${MYSQL_HOST:host.docker.internal}:27017/configuration-service
+    driver-class-name: com.mongodb.jdbc.MongoDriver
+#    username: configurationserviceuser
+#    password: password
 logging:
   level:
     org:
