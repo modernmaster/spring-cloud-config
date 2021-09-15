@@ -6,8 +6,8 @@ Refresh: curl --insecure --location --request POST 'https://localhost/configurat
 
 ## Configuration Sidecar
 
-Request: https://localhost/myconfig-client-app/config
+Request: https://localhost/configuration-sidecar/config
 
-Refresh: curl --insecure -H "Content-Type: application/json" -d {} https://localhost/myconfig-client-app/actuator/refresh
+Refresh: curl --insecure -H "Content-Type: application/json" -d {} https://localhost/configuration-sidecar/actuator/refresh
 
 Use loopback network interface for sidecar i.e. 'localhost' as communication mechanism between consuming microservice.

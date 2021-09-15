@@ -20,3 +20,4 @@ buildNumber.properties
 /ui/node_modules/
 /ui/src/main/resources/static/built/
 /.mvn/
+/ui/dist/
