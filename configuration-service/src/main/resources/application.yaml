@@ -21,14 +21,11 @@ spring:
         binder:
           zkNodes: kafka-service:2181
           brokers: kafka-service:9092
-#  data:
+  data:
+    mongodb:
+      uri: mongodb://${MONGO_HOST:host.docker.internal}:27017/reference-data-service
 #    rest:
 #      base-path: /api
-  datasource:
-    url: jdbc:mysql://${MYSQL_HOST:host.docker.internal}:3306/configurationservice
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: configurationserviceuser
-    password: password
 logging:
   level:
-    root: INFO
+    root: ERROR

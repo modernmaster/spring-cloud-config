@@ -6,4 +6,5 @@ spring:
   application:
     name: configuration-service
   profiles:
-    active: jdbc,dev
+    active: dev
+

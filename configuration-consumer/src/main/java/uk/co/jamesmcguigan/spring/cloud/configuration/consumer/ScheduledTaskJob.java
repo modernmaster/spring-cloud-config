@@ -27,6 +27,8 @@ public class ScheduledTaskJob {
         log.info(THE_TIME_IS_NOW, dateFormat.format(new Date()));
         try {
             WebClient client = WebClient.builder()
+                    .filters(exchangeFilterFunctions -> {
+                    })
                     .baseUrl(HTTP_LOCALHOST_8080)
                     .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                     .defaultUriVariables(Collections.singletonMap(URL, HTTP_LOCALHOST_8080))
@@ -37,4 +39,5 @@ public class ScheduledTaskJob {
             log.error(ERROR_HAS_BEEN_THROWN, e);
         }
     }
+
 }

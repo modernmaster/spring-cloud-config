@@ -15,6 +15,6 @@ management:
     web:
       exposure:
         include: "*"
-prop1: prop1 from local
+prop1: prop1 from sidecar
 server:
   port: 8080

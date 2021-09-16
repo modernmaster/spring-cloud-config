@@ -4,7 +4,7 @@ eureka:
     preferIpAddress: true
 spring:
   application:
-    name: configuration-sidecar
+    name: licensee
   cloud:
     bus:
       #spring.cloud.bus.id=${spring.application.name}-${instance.name}
