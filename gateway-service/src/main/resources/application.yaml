@@ -1,14 +1,14 @@
 logging:
   level:
-    root: INFO
+    root: ERROR
     org:
       apache:
-        http: INFO
+        http: ERROR
     springframework:
       data:
         rest:
           webmvc:
-            json: INFO
+            json: ERROR
 management:
   health:
     gateway:

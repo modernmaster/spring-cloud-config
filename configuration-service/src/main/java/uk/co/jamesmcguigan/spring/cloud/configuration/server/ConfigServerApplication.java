@@ -1,12 +1,9 @@
-package com.javalopment.springboot.configserver;
+package uk.co.jamesmcguigan.spring.cloud.configuration.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
-/**
- * @EnableConfigServer -- enable config server
- */
 @EnableConfigServer
 @SpringBootApplication
 public class ConfigServerApplication {

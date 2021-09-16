@@ -1,5 +1,15 @@
 instance:
   name: instance01
+logging:
+  level:
+    root: ERROR
+    uk:
+      co:
+        jamesmcguigan:
+          spring:
+            cloud:
+              configuration:
+                sidecar: INFO
 management:
   endpoints:
     web:

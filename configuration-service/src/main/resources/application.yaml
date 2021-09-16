@@ -21,6 +21,9 @@ spring:
         binder:
           zkNodes: kafka-service:2181
           brokers: kafka-service:9092
+#  data:
+#    rest:
+#      base-path: /api
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:host.docker.internal}:3306/configurationservice
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -28,7 +31,4 @@ spring:
     password: password
 logging:
   level:
-    org:
-      springframework:
-        jdbc:
-          core: TRACE
+    root: INFO

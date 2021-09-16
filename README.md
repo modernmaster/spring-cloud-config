@@ -1,6 +1,6 @@
 ## Configuration Service
 
-Retrieve: https://localhost/configuration-service/default/dev
+Retrieve: https://localhost/configuration-service/{application|myconfig-client-app}/default/dev
 
 Refresh: curl --insecure --location --request POST 'https://localhost/configuration-service/monitor' --header 'X-Github-Event: push' --header 'Content-Type: application/json' --data-raw '{"commits": [{"modified": ["myconfig-client-app.properties"] }]}'
 

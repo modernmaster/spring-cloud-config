@@ -29,3 +29,8 @@ spec:
           value: configuration-sidecar
         - name: eureka.client.service-url.defaultZone
           value: http://discovery-service:8761/eureka
+      - name: configuration-consumer
+        image: configuration-consumer
+        env:
+          - name: HOST_NAME
+            value: configuration-consumer

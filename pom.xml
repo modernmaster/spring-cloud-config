@@ -13,6 +13,8 @@
         <module>configuration-service</module>
         <module>discovery-service</module>
         <module>gateway-service</module>
+        <module>configuration-consumer</module>
+        <module>domain</module>
     </modules>
 
     <properties>
@@ -21,8 +23,6 @@
         <bootstrap.version>4.2.1</bootstrap.version>
         <jackson.version>2.12.3</jackson.version>
         <java.version>11</java.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
         <spring.boot.version>2.4.3</spring.boot.version>
         <spring.cloud.version>2.2.4.RELEASE</spring.cloud.version>
         <spring.cloud.dependencies.version>2020.0.0</spring.cloud.dependencies.version>

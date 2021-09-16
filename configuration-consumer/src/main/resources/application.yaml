@@ -1,0 +1,12 @@
+logging:
+  level:
+    root: ERROR
+    uk:
+      co:
+        jamesmcguigan:
+          spring:
+            cloud:
+              configuration:
+                consumer: INFO
+server:
+  port: 8090
