@@ -1,5 +1,7 @@
 package uk.co.jamesmcguigan.spring.cloud.configuration.server.environment;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.config.YamlProcessor;
 import org.springframework.cloud.config.environment.Environment;
 import org.springframework.cloud.config.environment.PropertySource;
@@ -18,9 +20,12 @@ public class MongoEnvironmentRepository implements EnvironmentRepository {
     private static final String DEFAULT = "default";
     private static final String DEFAULT_PROFILE = null;
     private static final String DEFAULT_LABEL = null;
+    private static final String S_S = "%s-%s";
+    private static final String S_S_S = "%s-%s-%s";
+    private static final String CANNOT_LOAD_ENVIRONMENT = "Cannot load environment";
 
-    private MongoTemplate mongoTemplate;
-    private MapFlattener mapFlattener;
+    private final MongoTemplate mongoTemplate;
+    private final MapFlattener mapFlattener;
 
     public MongoEnvironmentRepository(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;
@@ -59,7 +64,7 @@ public class MongoEnvironmentRepository implements EnvironmentRepository {
                 environment.add(propSource);
             }
         } catch (Exception e) {
-            throw new IllegalStateException("Cannot load environment", e);
+            throw new IllegalStateException(CANNOT_LOAD_ENVIRONMENT, e);
         }
 
         return environment;
@@ -71,29 +76,19 @@ public class MongoEnvironmentRepository implements EnvironmentRepository {
 
     private void sortSourcesByLabel(List<MongoPropertySource> sources,
                                     final List<String> labels) {
-        Collections.sort(sources, new Comparator<MongoPropertySource>() {
-
-            @Override
-            public int compare(MongoPropertySource s1, MongoPropertySource s2) {
-                int i1 = labels.indexOf(s1.getLabel());
-                int i2 = labels.indexOf(s2.getLabel());
-                return Integer.compare(i1, i2);
-            }
-
+        sources.sort((s1, s2) -> {
+            int i1 = labels.indexOf(s1.getLabel());
+            int i2 = labels.indexOf(s2.getLabel());
+            return Integer.compare(i1, i2);
         });
     }
 
     private void sortSourcesByProfile(List<MongoPropertySource> sources,
                                       final List<String> profiles) {
-        Collections.sort(sources, new Comparator<MongoPropertySource>() {
-
-            @Override
-            public int compare(MongoPropertySource s1, MongoPropertySource s2) {
-                int i1 = profiles.indexOf(s1.getProfile());
-                int i2 = profiles.indexOf(s2.getProfile());
-                return Integer.compare(i1, i2);
-            }
-
+        sources.sort((s1, s2) -> {
+            int i1 = profiles.indexOf(s1.getProfile());
+            int i2 = profiles.indexOf(s2.getProfile());
+            return Integer.compare(i1, i2);
         });
     }
 
@@ -102,43 +97,19 @@ public class MongoEnvironmentRepository implements EnvironmentRepository {
         String profile = source.getProfile() != null ? source.getProfile() : DEFAULT;
         String label = source.getLabel();
         if (label != null) {
-            sourceName = String.format("%s-%s-%s", environmentName, profile, label);
+            sourceName = String.format(S_S_S, environmentName, profile, label);
         } else {
-            sourceName = String.format("%s-%s", environmentName, profile);
+            sourceName = String.format(S_S, environmentName, profile);
         }
         return sourceName;
     }
 
+    @Getter
+    @Setter
     public static class MongoPropertySource {
-
         private String profile;
         private String label;
-        private LinkedHashMap<String, Object> source = new LinkedHashMap<String, Object>();
-
-        public String getProfile() {
-            return profile;
-        }
-
-        public void setProfile(String profile) {
-            this.profile = profile;
-        }
-
-        public String getLabel() {
-            return label;
-        }
-
-        public void setLabel(String label) {
-            this.label = label;
-        }
-
-        public LinkedHashMap<String, Object> getSource() {
-            return source;
-        }
-
-        public void setSource(LinkedHashMap<String, Object> source) {
-            this.source = source;
-        }
-
+        private final LinkedHashMap<String, Object> source = new LinkedHashMap<>();
     }
 
     private static class MapFlattener extends YamlProcessor {
