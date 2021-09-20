@@ -2,43 +2,43 @@ apiVersion: skaffold/v2beta22
 kind: Config
 build:
   artifacts:
-  - image: discovery-service
-    jib:
-      project: discovery-service
-  - image: gateway-service
-    jib:
-      project: gateway-service
-  - image: configuration-service
-    jib:
-      project: configuration-service
-  - image: configuration-sidecar
-    jib:
-      project: configuration-sidecar
-  - image: configuration-consumer
-    jib:
-      project: configuration-consumer
+    - image: discovery-service
+      jib:
+        project: discovery-service
+    - image: gateway-service
+      jib:
+        project: gateway-service
+    - image: configuration-service
+      jib:
+        project: configuration-service
+    - image: configuration-sidecar
+      jib:
+        project: configuration-sidecar
+    - image: configuration-consumer
+      jib:
+        project: configuration-consumer
 
   tagPolicy:
-    sha256: {}
+    sha256: { }
 deploy:
   kubectl:
     manifests:
-    - ./kubernetes-manifests/**.yaml
-    - ./kubernetes-manifests/**/**.yaml
+      - ./kubernetes-manifests/**.yaml
+      - ./kubernetes-manifests/**/**.yaml
 profiles:
-- name: cloudbuild
-  build:
-    googleCloudBuild: {}
-- name: dockerfile
-  build:
-    artifacts:
-    - image: discovery-service
-      context: discovery-service
-    - image: gateway-service
-      context: gateway-service
-    - image: configuration-service
-      context: configuration-service
-    - image: configuration-sidecar
-      context: configuration-sidecar
-    - image: configuration-consumer
-      context: configuration-consumer
+  - name: cloudbuild
+    build:
+      googleCloudBuild: { }
+  - name: dockerfile
+    build:
+      artifacts:
+        - image: discovery-service
+          context: discovery-service
+        - image: gateway-service
+          context: gateway-service
+        - image: configuration-service
+          context: configuration-service
+        - image: configuration-sidecar
+          context: configuration-sidecar
+        - image: configuration-consumer
+          context: configuration-consumer

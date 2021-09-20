@@ -4,7 +4,9 @@ Application name of consuming sidecars must be the same name as the document in 
 
 Retrieve: https://localhost/configuration-service/{application-name}/{profile}/{label}}
 
-Refresh: curl --insecure --location --request POST 'https://localhost/configuration-service/monitor' --header 'X-Github-Event: push' --header 'Content-Type: application/json' --data-raw '{"commits": [{"modified": ["{applicaiton-name}.properties"] }]}'
+Refresh: curl --insecure --location --request POST 'https://localhost/configuration-service/monitor' --header '
+X-Github-Event: push' --header 'Content-Type: application/json' --data-raw '{"commits": [{"
+modified": ["{application-name}.properties"] }]}'
 
 ## Configuration Sidecar
 
@@ -14,12 +16,9 @@ Refresh: curl --insecure -H "Content-Type: application/json" -d {} https://local
 
 Use loopback network interface for sidecar i.e. 'localhost' as communication mechanism between consuming microservice.
 
-## Database 
+## Database
 
-Platform - MongoDB
-Source - reference-data-service
-Collection - licensee
-Test Data
+Platform - MongoDB Source - reference-data-service Collection - licensee Test Data
 
 {
 "_id": {
@@ -30,11 +29,9 @@ Test Data
 "source": {
 "user": {
 "max-connections": 1,
-"timeout-ms": 3600
-},
+"timeout-ms": 3600 },
 "prop1": "Configuration object from service"
-}
-}
+} }
 
 {
 "_id": {
@@ -43,8 +40,6 @@ Test Data
 "source": {
 "user": {
 "max-connections": 1,
-"timeout-ms": 3600
-},
+"timeout-ms": 3600 },
 "prop1": "Default configuration object from service"
-}
-}
+} }

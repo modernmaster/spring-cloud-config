@@ -19,11 +19,11 @@ spec:
         tier: frontend
     spec:
       containers:
-      - name: discovery-service
-        image: discovery-service
-        ports:
-        - name: eureka
-          containerPort: 8761
-        env:
-          - name: eureka.instance.hostname
-            value: discovery-service
+        - name: discovery-service
+          image: discovery-service
+          ports:
+            - name: eureka
+              containerPort: 8761
+          env:
+            - name: eureka.instance.hostname
+              value: discovery-service

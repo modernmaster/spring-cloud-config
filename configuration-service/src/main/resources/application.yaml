@@ -7,15 +7,12 @@ spring:
       id: my-configuration-service
     config:
       server:
-        #spring.cloud.config.server.default-application-name=common
-        #spring.cloud.config.server.default-profile=dev
-        #the label to be set to the query if the client does not send the label info
-        #spring.cloud.config.server.default-label=dev
-        #the profile to be set to the query if the client does not send the profile info
-        #spring.cloud.config.server.default-profile=dev
-        jdbc:
-          sql: SELECT CODE, VALUE from APP_CONFIG where APPLICATION=? and PROFILE=? and LABEL=?
-          order: 1
+      #spring.cloud.config.server.default-application-name=common
+      #spring.cloud.config.server.default-profile=dev
+      #the label to be set to the query if the client does not send the label info
+      #spring.cloud.config.server.default-label=dev
+      #the profile to be set to the query if the client does not send the profile info
+      #spring.cloud.config.server.default-profile=dev
     stream:
       kafka:
         binder:

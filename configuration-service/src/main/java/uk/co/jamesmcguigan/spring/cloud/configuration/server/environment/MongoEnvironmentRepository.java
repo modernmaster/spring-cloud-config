@@ -1,7 +1,5 @@
 package uk.co.jamesmcguigan.spring.cloud.configuration.server.environment;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.config.YamlProcessor;
 import org.springframework.cloud.config.environment.Environment;
 import org.springframework.cloud.config.environment.PropertySource;
@@ -102,14 +100,6 @@ public class MongoEnvironmentRepository implements EnvironmentRepository {
             sourceName = String.format(S_S, environmentName, profile);
         }
         return sourceName;
-    }
-
-    @Getter
-    @Setter
-    public static class MongoPropertySource {
-        private String profile;
-        private String label;
-        private final LinkedHashMap<String, Object> source = new LinkedHashMap<>();
     }
 
     private static class MapFlattener extends YamlProcessor {

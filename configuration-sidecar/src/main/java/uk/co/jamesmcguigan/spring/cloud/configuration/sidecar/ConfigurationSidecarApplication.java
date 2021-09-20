@@ -4,10 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import uk.co.jamesmcguigan.spring.cloud.domain.AppConfig;
+import uk.co.jamesmcguigan.spring.cloud.domain.ReferenceData;
 
 @SpringBootApplication
-@EnableConfigurationProperties({AppConfig.class})
+@EnableConfigurationProperties({ReferenceData.class})
 @Slf4j
 public class ConfigurationSidecarApplication {
 

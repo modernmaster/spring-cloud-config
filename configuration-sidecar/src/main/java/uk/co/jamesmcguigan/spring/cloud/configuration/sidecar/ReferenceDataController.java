@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import uk.co.jamesmcguigan.spring.cloud.domain.AppConfig;
+import uk.co.jamesmcguigan.spring.cloud.domain.ReferenceData;
 
 @RestController
-public class LicenseeController {
+public class ReferenceDataController {
 
     @Autowired
-    private AppConfig appConfig;
+    private ReferenceData referenceData;
 
-    @RequestMapping(path = "/config", method = RequestMethod.GET)
-    public AppConfig get() {
-        return appConfig;
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public ReferenceData get() {
+        return referenceData;
     }
 }
 
