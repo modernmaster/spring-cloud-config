@@ -1,6 +1,6 @@
 logging:
   level:
-    root: ERROR
+    root: DEBUG
     org:
       apache:
         http: ERROR
@@ -37,6 +37,11 @@ spring:
             allowedHeaders: "*"
             allowedMethods:
               - GET
+      routes:
+        - id: ui
+          uri: http://ui/
+          predicates:
+            - Path=/ui,/ui/**
   main:
     allow-bean-definition-overriding: true
   devtools:

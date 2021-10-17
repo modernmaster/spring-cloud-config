@@ -17,7 +17,10 @@ build:
     - image: configuration-consumer
       jib:
         project: configuration-consumer
-
+    - image: ui
+      context: ui
+      docker:
+        dockerfile: Dockerfile
   tagPolicy:
     sha256: { }
 deploy:
@@ -42,3 +45,5 @@ profiles:
           context: configuration-sidecar
         - image: configuration-consumer
           context: configuration-consumer
+        - image: ui
+          context: ui

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui
+  namespace: spring-cloud-config
+  labels:
+    app: ui
+    tier: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: ui
+    tier: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      name: http
